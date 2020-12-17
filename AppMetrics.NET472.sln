@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.AppMetrics.NET472", "Api.AppMetrics.NET472\Api.AppMetrics.NET472.csproj", "{06A62556-AE46-484E-9EA5-856A8BFD0815}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "New.Api.AppMetrics.NET472", "New.Api.AppMetrics.NET472\New.Api.AppMetrics.NET472.csproj", "{58E5B598-649C-4EA7-91BE-8C923ABD0F92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppMetrics.NET472.Library", "AppMetrics.NET472.Library\AppMetrics.NET472.Library.csproj", "{4A876DD5-2200-4197-A718-8D8B4136C4FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{06A62556-AE46-484E-9EA5-856A8BFD0815}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06A62556-AE46-484E-9EA5-856A8BFD0815}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06A62556-AE46-484E-9EA5-856A8BFD0815}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58E5B598-649C-4EA7-91BE-8C923ABD0F92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58E5B598-649C-4EA7-91BE-8C923ABD0F92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58E5B598-649C-4EA7-91BE-8C923ABD0F92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58E5B598-649C-4EA7-91BE-8C923ABD0F92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A876DD5-2200-4197-A718-8D8B4136C4FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A876DD5-2200-4197-A718-8D8B4136C4FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A876DD5-2200-4197-A718-8D8B4136C4FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A876DD5-2200-4197-A718-8D8B4136C4FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

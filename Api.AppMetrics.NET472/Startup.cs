@@ -24,7 +24,7 @@ namespace Api.AppMetrics.NET472
         {
             var httpConfiguration = new HttpConfiguration();
             httpConfiguration.MessageHandlers.Add(new MetricsWebApiMessageHandler());
-            httpConfiguration.Register();
+            httpConfiguration.RegisterWebApi();
 
             var services = new ServiceCollection();
             ConfigureServices(services);

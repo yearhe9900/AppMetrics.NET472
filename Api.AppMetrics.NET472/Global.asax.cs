@@ -13,7 +13,7 @@ namespace Api.AppMetrics.NET472
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            // GlobalConfiguration.Configure(WebApiConfig.Register);
+            //GlobalConfiguration.Configure(WebApiConfig.Register);
         }
 
         protected void Session_Start(object sender, EventArgs e)
