@@ -49,11 +49,20 @@
     <Reference Include="App.Metrics.Formatters.Ascii, Version=4.1.0.0, Culture=neutral, PublicKeyToken=0d5193a913d1b812, processorArchitecture=MSIL">
       <HintPath>..\packages\App.Metrics.Formatters.Ascii.4.1.0\lib\net461\App.Metrics.Formatters.Ascii.dll</HintPath>
     </Reference>
+    <Reference Include="App.Metrics.Formatters.InfluxDB, Version=4.1.0.0, Culture=neutral, PublicKeyToken=0d5193a913d1b812, processorArchitecture=MSIL">
+      <HintPath>..\packages\App.Metrics.Formatters.InfluxDB.4.1.0\lib\netstandard2.0\App.Metrics.Formatters.InfluxDB.dll</HintPath>
+    </Reference>
     <Reference Include="App.Metrics.Formatters.Json, Version=4.1.0.0, Culture=neutral, PublicKeyToken=0d5193a913d1b812, processorArchitecture=MSIL">
       <HintPath>..\packages\App.Metrics.Formatters.Json.4.1.0\lib\net461\App.Metrics.Formatters.Json.dll</HintPath>
     </Reference>
     <Reference Include="App.Metrics.Formatting.InfluxDB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\App.Metrics.Formatting.InfluxDB.1.0.0\lib\net452\App.Metrics.Formatting.InfluxDB.dll</HintPath>
+    </Reference>
+    <Reference Include="App.Metrics.InfluxDB, Version=4.1.0.0, Culture=neutral, PublicKeyToken=0d5193a913d1b812, processorArchitecture=MSIL">
+      <HintPath>..\packages\App.Metrics.InfluxDB.4.1.0\lib\netstandard2.0\App.Metrics.InfluxDB.dll</HintPath>
+    </Reference>
+    <Reference Include="App.Metrics.Reporting.InfluxDB, Version=4.1.0.0, Culture=neutral, PublicKeyToken=0d5193a913d1b812, processorArchitecture=MSIL">
+      <HintPath>..\packages\App.Metrics.Reporting.InfluxDB.4.1.0\lib\netstandard2.0\App.Metrics.Reporting.InfluxDB.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>

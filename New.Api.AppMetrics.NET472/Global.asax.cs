@@ -1,3 +1,4 @@
+using App.Metrics.Gauge;
 using AppMetrics.NET472.Library.Infrastructure;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,14 @@ namespace New.Api.AppMetrics.NET472
     {
         protected void Application_Start()
         {
-            ApiMetrics.SetMetrics(new InitAppMetricsModel()
+            var metrics = ApiMetrics.SetMetrics(new InitAppMetricsModel()
             {
-                DefaultContextLabel = "apiappmetricsnet472"
+                BaseUri = "http://192.168.137.253:8086",
+                UserName = "hzp",
+                Password = "he181904",
+                Database = "test"
             });
+
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }

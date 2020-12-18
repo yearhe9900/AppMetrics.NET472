@@ -42,6 +42,7 @@ namespace AppMetrics.NET472.Library.Infrastructure
             {
                 globalMetricTags.Add(item.Key, item.Value);
             }
+
             var metrics = new MetricsBuilder()
                             .Configuration.Configure(options =>
                             {
@@ -49,9 +50,20 @@ namespace AppMetrics.NET472.Library.Infrastructure
                                 options.AddAppTag(Assembly.GetExecutingAssembly().GetName().Name);
                                 options.AddServerTag(Environment.MachineName);
                                 options.AddEnvTag(initAppMetricsModel.EnvTag);
-
                                 options.GlobalTags = globalMetricTags;
-                            }).Report.ToInfluxDb
+                            })
+                            .Report.ToInfluxDb(options =>
+                            {
+                                options.InfluxDb.BaseUri = new Uri(initAppMetricsModel.BaseUri);
+                                options.InfluxDb.Database = initAppMetricsModel.Database;
+                                options.InfluxDb.UserName = initAppMetricsModel.UserName;
+                                options.InfluxDb.Password = initAppMetricsModel.Password;
+                                options.HttpPolicy.BackoffPeriod = TimeSpan.FromSeconds(30);
+                                options.HttpPolicy.FailuresBeforeBackoff = 5;
+                                options.HttpPolicy.Timeout = TimeSpan.FromSeconds(3);
+                                options.FlushInterval = TimeSpan.FromSeconds(5);
+                            })
+                            .OutputMetrics.AsJson()
                             .Build();
 
             return metrics;
