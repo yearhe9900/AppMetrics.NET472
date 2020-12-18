@@ -20,6 +20,12 @@ namespace AppMetrics.NET472.Library
         {
             var routeTemplate = GetRouteTemplate(request);
 
+            // 如果访问的是 /metrics ，则不计入统计中
+            if (routeTemplate.Contains("GetMetrics"))
+            {
+                return await base.SendAsync(request, cancellationToken);
+            }
+
             StartRecordingResponseTime(request);
 
             var response = await base.SendAsync(request, cancellationToken);
@@ -59,8 +65,8 @@ namespace AppMetrics.NET472.Library
         private void EndRecordingResponseTime(string routeTemplate, HttpRequestMessage request, HttpResponseMessage response)
         {
             var stopwatch = response.RequestMessage.Properties[API_METRICS_RESPONSE_TIME_KEY] as Stopwatch;
-
-            ApiMetrics.GetMetrics().Provider.Timer.Instance(new TimerOptions
+            var metrics = ApiMetrics.GetMetrics();
+            metrics.Provider.Timer.Instance(new TimerOptions
             {
                 Name = "Response Time",
                 Tags = new MetricTags(
@@ -71,7 +77,7 @@ namespace AppMetrics.NET472.Library
                 RateUnit = TimeUnit.Milliseconds,
                 MeasurementUnit = Unit.Requests
             }).Record(stopwatch.ElapsedMilliseconds, TimeUnit.Milliseconds);
-
+            Task.WhenAll(metrics.ReportRunner.RunAllAsync());
             response.RequestMessage.Properties.Remove(API_METRICS_RESPONSE_TIME_KEY);
         }
 

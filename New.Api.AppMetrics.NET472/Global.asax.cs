@@ -3,6 +3,7 @@ using AppMetrics.NET472.Library.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Routing;
@@ -20,7 +21,7 @@ namespace New.Api.AppMetrics.NET472
                 Password = "he181904",
                 Database = "test"
             });
-
+          
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }

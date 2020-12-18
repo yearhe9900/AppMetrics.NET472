@@ -5,6 +5,8 @@ using App.Metrics.Extensions.Reporting.InfluxDB;
 using System.Linq;
 using System.Reflection;
 using System.Web;
+using App.Metrics.Formatters.InfluxDB;
+using App.Metrics.Filtering;
 
 namespace AppMetrics.NET472.Library.Infrastructure
 {
@@ -42,7 +44,7 @@ namespace AppMetrics.NET472.Library.Infrastructure
             {
                 globalMetricTags.Add(item.Key, item.Value);
             }
-
+         
             var metrics = new MetricsBuilder()
                             .Configuration.Configure(options =>
                             {
@@ -62,8 +64,10 @@ namespace AppMetrics.NET472.Library.Infrastructure
                                 options.HttpPolicy.FailuresBeforeBackoff = 5;
                                 options.HttpPolicy.Timeout = TimeSpan.FromSeconds(3);
                                 options.FlushInterval = TimeSpan.FromSeconds(5);
+                           
+                                options.InfluxDb.CreateDataBaseIfNotExists = true;//如果没有库，则创建
+                                options.MetricsOutputFormatter = new MetricsInfluxDbLineProtocolOutputFormatter();
                             })
-                            .OutputMetrics.AsJson()
                             .Build();
 
             return metrics;
