@@ -40,11 +40,14 @@ namespace AppMetrics.NET472.Library.Infrastructure
         private static IMetricsRoot InitAppMetrics(InitAppMetricsModel initAppMetricsModel)
         {
             GlobalMetricTags globalMetricTags = new GlobalMetricTags();
-            foreach (var item in initAppMetricsModel.GlobalTags)
+            if (initAppMetricsModel.GlobalTags != null)
             {
-                globalMetricTags.Add(item.Key, item.Value);
+                foreach (var item in initAppMetricsModel.GlobalTags)
+                {
+                    globalMetricTags.Add(item.Key, item.Value);
+                }
             }
-         
+
             var metrics = new MetricsBuilder()
                             .Configuration.Configure(options =>
                             {
@@ -64,7 +67,7 @@ namespace AppMetrics.NET472.Library.Infrastructure
                                 options.HttpPolicy.FailuresBeforeBackoff = 5;
                                 options.HttpPolicy.Timeout = TimeSpan.FromSeconds(3);
                                 options.FlushInterval = TimeSpan.FromSeconds(5);
-                           
+
                                 options.InfluxDb.CreateDataBaseIfNotExists = true;//如果没有库，则创建
                                 options.MetricsOutputFormatter = new MetricsInfluxDbLineProtocolOutputFormatter();
                             })

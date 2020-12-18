@@ -66,18 +66,18 @@ namespace AppMetrics.NET472.Library
         {
             var stopwatch = response.RequestMessage.Properties[API_METRICS_RESPONSE_TIME_KEY] as Stopwatch;
             var metrics = ApiMetrics.GetMetrics();
-            metrics.Provider.Timer.Instance(new TimerOptions
+            var timer = metrics.Provider.Timer.Instance(new TimerOptions
             {
-                Name = "Response Time",
+                Name = "Request Time",
                 Tags = new MetricTags(
-                    new string[] { "method", "route", "status" },
-                    new string[] { request.Method.Method, routeTemplate, ((int)response.StatusCode).ToString() }
-                    ),
+                       new string[] { "method", "route", "status" },
+                       new string[] { request.Method.Method, routeTemplate, ((int)response.StatusCode).ToString() }
+                       ),
                 DurationUnit = TimeUnit.Milliseconds,
                 RateUnit = TimeUnit.Milliseconds,
-                MeasurementUnit = Unit.Requests
-            }).Record(stopwatch.ElapsedMilliseconds, TimeUnit.Milliseconds);
-            Task.WhenAll(metrics.ReportRunner.RunAllAsync());
+                MeasurementUnit = Unit.Calls
+            });
+            timer.Record(stopwatch.ElapsedMilliseconds, TimeUnit.Milliseconds);
             response.RequestMessage.Properties.Remove(API_METRICS_RESPONSE_TIME_KEY);
         }
 

@@ -19,7 +19,7 @@ namespace AppMetrics.NET472.Library.Infrastructure
         public string EnvTag { get; set; } = "Dev";
 
 
-        public Dictionary<string, string> GlobalTags { get; set; } = new Dictionary<string, string>() { { "my_custom_tag", "MyCustomValue" } };
+        public Dictionary<string, string> GlobalTags { get; set; }
 
         /// <summary>
         /// influx db 链接地址

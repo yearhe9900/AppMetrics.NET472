@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace New.Api.AppMetrics.NET472.Controllers
 {
-    public class TestController : ApiController
+    public class DefaultController : ApiController
     {
         [HttpGet]
         public IHttpActionResult MyGet()
